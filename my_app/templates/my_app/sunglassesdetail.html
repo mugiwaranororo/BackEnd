@@ -1,0 +1,14 @@
+{% extends 'my_app/base.html' %}
+{% block content %}
+<div class="div-sunglasses-elements">
+    <div class="div-classic">
+        {{ sunglasses.id }}
+        {{ sunglasses.price }}
+        {{ sunglasses.name }}
+        {{ sunglasses.user }}
+        {{ sunglasses.brand }}
+        {{ sunglasses.type }}
+        {{ sunglasses.color }}
+    </div>
+</div>
+{% endblock %}

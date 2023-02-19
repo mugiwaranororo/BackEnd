@@ -1,0 +1,65 @@
+<!-- templates/home.html -->
+<!-- to connect home.html with base.html -->
+{% extends 'my_app/base.html' %}
+
+{% block title %}Home{% endblock %}
+<!-- starting content to show in base.html -->
+{% block content %}
+<!-- if the user is here, display all his possessions otherwise it says that you are not logged in -->
+<br/></br>
+<br/></br>
+{% if user.is_authenticated %}
+  <h2>Here are your sunglasses:</h2>
+    <div class="div-sunglasses">
+      {% for sunglasses in sunglasses_list %}
+      {% if sunglasses.user == user %}
+      <article>
+        <img src="{{ sunglasses.image }}" alt="sunglasses">
+        <div class="article-content">
+          <h1>{{ sunglasses.name }}</h1>
+          <p class="article-description">
+            <p>Price: {{ sunglasses.price }}</p>
+            <p>Brand: {{ sunglasses.brand }}</p>
+            <p>Type: {{ sunglasses.type }}</p>
+            <p>Color: {{ sunglasses.color }}</p>
+          </p>
+        </div>
+        <div class="article-bottom">
+          <div class="article-bottom-item">
+            <i class="fas fa-heart"></i>
+            <div class="article-bottom-item-value">
+              <a href="{% url 'update' sunglasses.id %}">Edit</a>
+            </div>
+        </div>
+          <div class="article-bottom-item">
+            <i class="fas fa-comments"></i>
+            <div class="article-bottom-item-value">
+              <a href="{% url 'delete' sunglasses.id %}">Delete</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+{% else %}
+  <p>You are not logged in</p>
+{% endif %}
+<!-- display all the sunglasses of all users -->
+<h2>Here are all the sunglasses:</h2>
+<div class="div-sunglasses">
+{% for sunglasses in sunglasses_list %}
+  <article>
+    <img src="{{ sunglasses.image }}" alt="sunglasses">
+    <div class="article-bottom">
+      <div class="article-bottom-item">
+        <i class="fas fa-heart"></i>
+        <div class="article-bottom-item-value">
+          <a href="{% url 'sunglasses_detail' sunglasses.id %}">{{ sunglasses.name }}</a>
+      </div>
+    </div>
+</article>
+{% endfor %}
+</div>
+{% endblock %}
+

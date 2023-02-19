@@ -1,0 +1,7 @@
+{% extends 'my_app/base.html' %}
+<!-- start to display the webpage -->
+{% block content %}
+<form action="{% url 'refound' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>

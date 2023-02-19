@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Sunglasses{% endblock %}</title>
+
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <!-- My css -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'my_app/style.css' %}?{% now 'U' %}">
+</head>
+
+<body>
+    <!-- display the nav bar at the top of the page -->
+    {% include 'my_app/nav.html' %}
+    <div class="container">
+        <!-- if there is a message, show it as an alert that we can remove with the cross -->
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        <!-- display the content of the page that are connected to this one -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

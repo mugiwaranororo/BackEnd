@@ -1,0 +1,20 @@
+{% extends 'my_app/base.html' %}
+<!-- start to display the web page -->
+{%block content%}
+
+<div class="center">
+ 	<form method="post" novalidate class="card">
+		{%csrf_token %}
+		<h2>Update Sunglasses</h2>
+		<div class="div">
+			<!-- update the sunglasses fields -->
+			<form action="{% url 'sunglasses' %}" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+			<input type="submit" value="Save" class="btn btn-primary"/>
+			<a href="http://127.0.0.1:8000/" class="btn btn-outline">Cancel</a>
+			</form>
+		</div>
+	</form>
+</div>
+{% endblock %}

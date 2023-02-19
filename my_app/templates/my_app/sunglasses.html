@@ -1,0 +1,22 @@
+{% extends 'my_app/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sunglasses</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <div>
+        <form action="{% url 'sunglasses' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+    {% else %}
+        <p>You have to log in to buy sunglasses</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}
