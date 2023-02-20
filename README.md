@@ -35,3 +35,19 @@ for the moment you can't put your own picture but there is a default picture
 
 display the details of the sunglasses that you can't modify
 
+## Technologies
+
+- Python3.6
+- Django 2.1.5
+- HTML 5
+
+## Authors and Licence
+
+### Authors
+
+This application was created by Romain Dupre
+
+### Licence
+
+This project is not under licence
+
