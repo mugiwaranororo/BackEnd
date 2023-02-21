@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Sunglasses
 from django.views.generic.edit import UpdateView, DeleteView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, logout
+
 from .forms import SunglassesForm
 from django.contrib import messages
 
@@ -23,7 +26,7 @@ def SunglassesCreate(request):
             brandprice = sunglasses.brand.price
             colorprice = sunglasses.color.price
             typeprice = sunglasses.type.price
-            sunglasses.price = (brandprice + colorprice) * typeprice
+            sunglasses.price = (typeprice + colorprice) * brandprice
             sunglasses.save()
             messages.success(request, 'Sunglasses created successfully')
             return redirect('/')
@@ -40,7 +43,7 @@ class SunglassesUpdate(UpdateView):
 
     def form_valid(self, form):
         sunglasses = form.save()
-        sunglasses.price = (sunglasses.brand.price + sunglasses.color.price) * sunglasses.type.price
+        sunglasses.price = (sunglasses.type.price + sunglasses.color.price) * sunglasses.brand.price
         messages.success(self.request, 'Sunglasses updated successfully')
         return super().form_valid(form)
 
@@ -54,6 +57,42 @@ class SunglassesDetail(DetailView):
     model = Sunglasses
     template_name = 'my_app/sunglassesdetail.html'
     context_object_name = 'sunglasses'
+
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, ('You Have Been Logged In!'))
+            return redirect('home')
+        else:
+            messages.success(request, ('Error Logging In - Please Try Again...'))
+            return redirect('login')
+    else:
+        return render(request, 'authenticate/login.html', {})
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ('You Have Been Logged Out!'))
+    return redirect('home')
+
+def register_user(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, ('You Have Registered!'))
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'authenticate/register.html', {'form': form,})
 
 
     
