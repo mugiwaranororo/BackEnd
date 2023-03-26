@@ -17,6 +17,21 @@ run python manage.py makemigrations
 run python manage.py migrate
 run python manage.py runserver
 
+## Running the tests
+
+run python manage.py test
+
+## Tests
+
+### Models
+
+Create a new type model and check if the type is created
+Create a new brand model and check if the brand is created
+Create a new color model and check if the color is created
+Create a new sunglasses model and check if the sunglasses is created
+
+Check all the models of the sunglasses, the id, and the new user created
+
 ## Display
 
 click on the link http://
