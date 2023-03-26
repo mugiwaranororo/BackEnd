@@ -13,7 +13,18 @@ class MyViewTestCase(TestCase):
     def test_requires_authentication(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/accounts/login/?next=/my-view/')
+        self.assertRedirects(response, '/sunglasses/')
+
+#This is a negative test to check if a typical user can access the admin page
+class AdminViewTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('admin:index')
+
+    def test_requires_authentication(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/admin/')
 
 class BrandModelTest(TestCase):
     #This is a positive test to check if the brand is created

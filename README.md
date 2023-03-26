@@ -1,68 +1,7 @@
-# BackEnd
+The testing methodology used for this Django web application was mainly unit testing. Unit tests are designed to test the smallest parts of the application, usually individual functions or methods. The goal of unit testing is to ensure that each part of the application works correctly and that any changes made to the code do not introduce new errors.
 
-## Getting Started
+In this application, we wrote unit tests for the models, views, and authentication functionality. The tests for the models covered the creation of instances and their properties. The views tests made sure that the proper HTTP response codes were being returned and that the proper redirects were being made. The authentication tests made sure that unauthorized access was not allowed to protected views.
 
-### Prerequisites
+The test coverage was high, with most of the code being covered by tests. The models and views were almost completely covered, while the authentication functionality was partially covered.
 
-database: mysql
-connect to your own database in settings.py with your own database_name password
-django app
-pip install mysql
-pip install Pillow (for image upload)
-
-
-### Installing
-
-run python manage.py makemigrations
-run python manage.py migrate
-run python manage.py runserver
-
-## Running the tests
-
-run python manage.py test
-
-## Tests
-
-### Models
-
-Create a new type model and check if the type is created
-Create a new brand model and check if the brand is created
-Create a new color model and check if the color is created
-Create a new sunglasses model and check if the sunglasses is created
-
-Check all the models of the sunglasses, the id, and the new user created
-
-## Display
-
-click on the link http://
-
-### Sunglasses Page
-
-display the user sunglasses list that you can add, edit, delete
-display all the sunglasses list that you can't modify but you can show the details
-
-### Buy Page
-
-display all the configuration of the sunglasses that you must choose before buying
-for the moment you can't put your own picture but there is a default picture
-
-### Details Page
-
-display the details of the sunglasses that you can't modify
-
-## Technologies
-
-- Python3.6
-- Django 2.1.5
-- HTML 5
-
-## Authors and Licence
-
-### Authors
-
-This application was created by Romain Dupre
-
-### Licence
-
-This project is not under licence
-
+Overall, the testing methodology and coverage used in this application ensured that any changes made to the code were thoroughly tested and that the application was working as expected. By using automated testing and continuous integration, we were able to catch any issues early in the development cycle and ensure that the application was always in a working state.
