@@ -15,6 +15,5 @@ You have 3 functions to configure in the views folder:
 
 ### Set Up the routes
 There is a base.html that verify whether the user is connected or not. If the user is connected, it will display the username and a logout button. If the user is not connected, it will display a login and a signup button.
-![Firefox_Screenshot_2023-04-04T11-45-42 037Z](/home/romain/Bureau/BackEnd/image/image1.png)
 
 Moreover, if the user is not connected, he is not able to buy ne sunglasses.
