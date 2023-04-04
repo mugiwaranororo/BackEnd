@@ -1,7 +1,17 @@
-The testing methodology used for this Django web application was mainly unit testing. Unit tests are designed to test the smallest parts of the application, usually individual functions or methods. The goal of unit testing is to ensure that each part of the application works correctly and that any changes made to the code do not introduce new errors.
+# BackEnd
 
-In this application, we wrote unit tests for the models, views, and authentication functionality. The tests for the models covered the creation of instances and their properties. The views tests made sure that the proper HTTP response codes were being returned and that the proper redirects were being made. The authentication tests made sure that unauthorized access was not allowed to protected views.
+## Set Up the Authentification
 
-The test coverage was high, with most of the code being covered by tests. The models and views were almost completely covered, while the authentication functionality was partially covered.
+### Set Up the user model
+There is a user model in the models folder. You can add more fields to the user model and use it.
+This is why I used it for the sunglasses to add the user who created the sunglasses.
 
-Overall, the testing methodology and coverage used in this application ensured that any changes made to the code were thoroughly tested and that the application was working as expected. By using automated testing and continuous integration, we were able to catch any issues early in the development cycle and ensure that the application was always in a working state.
+### Set Up the views
+You have 3 functions to configure in the views folder:
+- `signup` to create a new user and connect it directly
+- `login` to connect a user with the proper username
+- `logout` to disconnect the user
+
+### Set Up the routes
+There is a base.html that verify whether the user is connected or not. If the user is connected, it will display the username and a logout button. If the user is not connected, it will display a login and a signup button.
+Moreover, if the user is not connected, he is not able to buy ne sunglasses.
